@@ -1,0 +1,33 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Article>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inject IReadingTimeService readingTimeService
+@{
+	Layout = "master.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+
+        <h2 class="mb-3">@Model.Title</h2>
+
+        <div class="text-muted mb-3">
+            <small>
+                Published: <strong>@Model.PublishDate.ToString("MMMM d, yyyy")</strong>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                Estimated read: <strong>@readingTimeService.Calculate(Model.Body.ToString()) min</strong>
+            </small>
+        </div>
+
+        @if (Model.HeroImage != null)
+        {
+            <img src="@Model.HeroImage.Url()" class="img-fluid mb-4 rounded" />
+        }
+
+        <p class="lead">@Model.Intro</p>
+
+        <div class="mb-4">
+            @Model.Body
+        </div>
+
+    </div>
+</div>

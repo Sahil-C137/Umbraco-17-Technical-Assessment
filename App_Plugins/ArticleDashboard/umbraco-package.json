@@ -1,0 +1,23 @@
+{
+  "name": "Article Dashboard",
+  "extensions": [
+    {
+      "type": "dashboard",
+      "alias": "articleDashboard",
+      "name": "Article Dashboard",
+      "elementName": "article-dashboard",
+      "js": "/App_Plugins/ArticleDashboard/dashboard.js",
+      "weight": 10,
+      "meta": {
+        "label": "Article Dashboard",
+        "pathname": "article-dashboard"
+      },
+      "conditions": [
+        {
+          "alias": "Umb.Condition.SectionAlias",
+          "match": "Umb.Section.Content"
+        }
+      ]
+    }
+  ]
+}

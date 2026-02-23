@@ -1,0 +1,33 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticleList>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "master.cshtml";
+}
+<h2 class="mb-4">@Model.Name</h2>
+
+<div class="row">
+@foreach (var article in Model.Children<ContentModels.Article>())
+{
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+
+            @if (article.HeroImage != null)
+            {
+                <img src="@article.HeroImage.Url()" class="card-img-top" />
+            }
+
+            <div class="card-body">
+                <h5 class="card-title">@article.Title</h5>
+
+                <p class="card-text">
+                    @article.Intro
+                </p>
+
+                <a href="@article.Url()" class="btn btn-primary">
+                    Read Article
+                </a>
+            </div>
+        </div>
+    </div>
+}
+</div>
